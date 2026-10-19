@@ -47,3 +47,7 @@ brand-page parity. Beyond scope (planned `silvershop/facets`): multi-facet refin
 ## Requirements
 
 - silvershop/core ^6, silverstripe/reports ^6, silverstripe/framework ^6, PHP ^8.3
+
+## Credits
+
+Built and maintained by **Remy Vaartjes** (<remy@xd.nl>) — part of the **SilverShop-Suite**.
