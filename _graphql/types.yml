@@ -1,0 +1,17 @@
+# Re-opens the shared Product type (declared in silvershop-suite/api-graphql's _graphql/types.yml) to add the `brand`
+# field, and defines the nested ShopBrand type. Field names mirror SilverShop\Api\Enrichment\BrandProductEnrichment
+# ($data['brand']) key-for-key, so GraphQL's default array field-resolver maps the REST serializer's output with no
+# PHP. silverstripe/graphql merges the field into the single Product type (Type::mergeWith). Only read when the
+# overlay is installed (see _config/graphql.yml guard).
+
+# Adds Product.brand — rides SilverShop\Api\Enrichment\BrandProductEnrichment
+Product:
+  fields:
+    brand: ShopBrand
+
+# SilverShop\Api\Enrichment\BrandProductEnrichment — {id, title, urlSegment} or null
+ShopBrand:
+  fields:
+    id: Int
+    title: String
+    urlSegment: String
