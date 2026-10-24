@@ -46,14 +46,17 @@ class BrandFacet implements SearchFacet
     public function getOptions(DataList $context, SearchQuery $query): array
     {
         $selected = array_map('strval', $query->selected($this->getName()));
-        $options = [];
 
+        // One pass over the context's BrandID column instead of a COUNT query per brand (N+1).
+        $counts = $this->countByBrand($context);
+
+        $options = [];
         foreach (Brand::get() as $brand) {
             $value = (string) $brand->URLSegment;
             if ($value === '') {
                 continue;
             }
-            $count = (int) $context->filter('BrandID', $brand->ID)->count();
+            $count = (int) ($counts[(int) $brand->ID] ?? 0);
             $active = in_array($value, $selected, true);
             if ($count === 0 && !$active) {
                 continue;
@@ -67,5 +70,24 @@ class BrandFacet implements SearchFacet
         }
 
         return $options;
+    }
+
+    /**
+     * Distinct context-product count per brand in one query: `BrandID` keyed by product id (so join-duplicated rows
+     * don't inflate the tally), counted per brand in PHP. Replaces the per-brand `->filter('BrandID', …)->count()`.
+     *
+     * @return array<int, int> brandID => distinct product count
+     */
+    private function countByBrand(DataList $context): array
+    {
+        $counts = [];
+        foreach ($context->map('ID', 'BrandID')->toArray() as $brandId) {
+            $brandId = (int) $brandId;
+            if ($brandId > 0) {
+                $counts[$brandId] = ($counts[$brandId] ?? 0) + 1;
+            }
+        }
+
+        return $counts;
     }
 }
