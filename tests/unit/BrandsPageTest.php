@@ -49,7 +49,7 @@ class BrandsPageTest extends SapphireTest
 
     public function testBrandFilterDefersToSearchWhenInstalled(): void
     {
-        // silvershop/search is a dev dependency here, so its category facet navigation owns the brand facet and
+        // silvershop-suite/search is a dev dependency here, so its category facet navigation owns the brand facet and
         // this standalone single-brand filter defers — avoiding double-filtering and multi-select mishandling.
         // (The standalone filter still narrows on shops that have brands but not search.)
         $brand = Brand::create(['Title' => 'Acme']);

@@ -10,9 +10,9 @@ use SilverShop\Search\Query\SearchQuery;
 use SilverStripe\ORM\DataList;
 
 /**
- * Brand facet for silvershop/search. Ships here (not in the search module) so brands owns its own filtering, and is
- * registered into the search FacetRegistry only when silvershop/search is installed (see _config/search.yml). Facet
- * values are brand URL segments, for readable facet URLs (`?brand=rains,nike`).
+ * Brand facet for silvershop-suite/search. Ships here (not in the search module) so brands owns its own filtering, and
+ * is registered into the search FacetRegistry only when silvershop-suite/search is installed (see _config/search.yml).
+ * Facet values are brand URL segments, for readable facet URLs (`?brand=rains,nike`).
  */
 class BrandFacet implements SearchFacet
 {

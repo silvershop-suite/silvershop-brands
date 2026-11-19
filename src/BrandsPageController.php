@@ -16,7 +16,7 @@ use SilverStripe\Model\List\PaginatedList;
  * Index renders the all-brands template ({@see BrandsPage}); any child URL segment is treated as a brand's
  * URLSegment and renders that brand + its products (`Layout/BrandsPage_show.ss`), or a 404.
  *
- * When silvershop/search is installed, the brand's product listing gains faceted navigation (price, attributes,
+ * When silvershop-suite/search is installed, the brand's product listing gains faceted navigation (price, attributes,
  * rating, stock, …) via the shared facet engine, so `/brands/<brand>/?price=25-50` refines within the brand. The
  * integration is soft — without search, the page just lists the brand's products.
  */

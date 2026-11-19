@@ -13,7 +13,7 @@ use SilverStripe\Control\Session;
 use SilverStripe\Dev\SapphireTest;
 
 /**
- * With silvershop/search installed (a dev dependency here), the brand page's product listing gains faceted
+ * With silvershop-suite/search installed (a dev dependency here), the brand page's product listing gains faceted
  * navigation: selected facets narrow the brand's products and facet data is exposed for the sidebar.
  */
 class BrandNavTest extends SapphireTest

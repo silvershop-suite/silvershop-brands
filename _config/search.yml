@@ -3,7 +3,7 @@ Name: silvershop-brands-search
 Only:
   moduleexists: silvershop-suite/search
 ---
-# Registers the brand facet into silvershop/search — only when that module is installed, so brands stays standalone.
+# Registers the brand facet into silvershop-suite/search — only when that module is installed, so brands stays standalone.
 SilverShop\Search\Facet\FacetRegistry:
   facets:
     brand: '%$SilverShop\Brands\Search\BrandFacet'
