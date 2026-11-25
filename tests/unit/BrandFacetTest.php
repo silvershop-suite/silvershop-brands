@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace SilverShop\Brands\Tests;
 
+use PHPUnit\Framework\Attributes\RequiresMethod;
 use SilverShop\Brands\Brand;
 use SilverShop\Brands\Search\BrandFacet;
 use SilverShop\Page\Product;
+use SilverShop\Search\Facet\SearchFacet;
 use SilverShop\Search\Query\SearchQuery;
 use SilverStripe\Dev\SapphireTest;
 
+#[RequiresMethod(SearchFacet::class, 'apply')]
 class BrandFacetTest extends SapphireTest
 {
     protected $usesDatabase = true;

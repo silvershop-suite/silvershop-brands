@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace SilverShop\Brands\Tests;
 
+use PHPUnit\Framework\Attributes\RequiresMethod;
 use SilverShop\Brands\Brand;
 use SilverShop\Brands\BrandsPage;
 use SilverShop\Brands\BrandsPageController;
 use SilverShop\Brands\ProductCategoryBrandFilterExtension;
 use SilverShop\Page\Product;
+use SilverShop\Search\Facet\SearchFacet;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse_Exception;
@@ -47,6 +49,7 @@ class BrandsPageTest extends SapphireTest
         $this->assertSame(['Star'], $page->FeaturedBrands()->column('Title'));
     }
 
+    #[RequiresMethod(SearchFacet::class, 'apply')]
     public function testBrandFilterDefersToSearchWhenInstalled(): void
     {
         // silvershop-suite/search is a dev dependency here, so its category facet navigation owns the brand facet and

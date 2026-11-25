@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace SilverShop\Brands\Tests;
 
+use PHPUnit\Framework\Attributes\RequiresMethod;
 use SilverShop\Brands\Brand;
 use SilverShop\Brands\BrandsPage;
 use SilverShop\Brands\BrandsPageController;
 use SilverShop\Page\Product;
+use SilverShop\Search\Facet\SearchFacet;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\Session;
 use SilverStripe\Dev\SapphireTest;
@@ -46,6 +48,7 @@ class BrandNavTest extends SapphireTest
         }
     }
 
+    #[RequiresMethod(SearchFacet::class, 'apply')]
     public function testBrandListingNarrowsByFacet(): void
     {
         $result = $this->showBrand(['price' => '0-25']);

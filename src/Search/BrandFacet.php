@@ -9,6 +9,12 @@ use SilverShop\Search\Facet\SearchFacet;
 use SilverShop\Search\Query\SearchQuery;
 use SilverStripe\ORM\DataList;
 
+// silvershop-suite/search is optional: without it this class stays undeclared,
+// because a flush loads every class and would fail on the missing interface.
+if (!interface_exists(SearchFacet::class)) {
+    return;
+}
+
 /**
  * Brand facet for silvershop-suite/search. Ships here (not in the search module) so brands owns its own filtering, and
  * is registered into the search FacetRegistry only when silvershop-suite/search is installed (see _config/search.yml).
